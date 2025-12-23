@@ -1,0 +1,180 @@
+:root {
+  --text: #111;
+  --muted: #444;
+  --border: #ddd;
+  --maxw: 900px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.55;
+}
+
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.name {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.tagline {
+  margin: 8px 0 0 0;
+  color: var(--muted);
+}
+
+.nav {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--text);
+}
+
+.section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Closed state: toggle + title inline */
+.section details > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.section details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Toggle icon BEFORE the title */
+.section details > summary::before {
+  content: "▸";
+  color: var(--muted);
+  font-size: 0.9em;
+  flex-shrink: 0;
+}
+
+.section details[open] > summary::before {
+  content: "▾";
+}
+
+.section details > summary h2 {
+  margin: 0;
+}
+
+/* Open state: vertical title on left, content on right */
+.section details[open] {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+}
+
+.section details[open] > summary {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-right: 20px;
+  border-right: 1px solid var(--border);
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.section details[open] > summary h2 {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+/* Content area when open */
+.section details[open] > .section-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.section-content > *:first-child {
+  margin-top: 0;
+}
+
+.section-content > p:first-child {
+  margin-top: 0;
+}
+
+.section h3 {
+  margin: 16px 0 8px 0;
+  font-size: 16px;
+}
+
+.section-content > h3:first-child {
+  margin-top: 0;
+}
+
+ul, ol {
+  margin: 10px 0 0 22px;
+}
+
+.muted {
+  /* font color should be gray */
+  color: #666;
+  font-size: 14px;
+}
+
+.pubs {
+  margin-left: 18px;
+}
+
+.pub-title {
+  font-weight: 600;
+}
+
+.pub-links a {
+  color: var(--text);
+}
+
+.contact {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.contact li {
+  margin: 6px 0;
+}
+
+.site-footer {
+  padding: 18px 0 40px 0;
+}
