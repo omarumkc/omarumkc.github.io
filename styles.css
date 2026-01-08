@@ -80,57 +80,47 @@ body {
 
 /* Toggle icon BEFORE the title */
 .section details > summary::before {
-  content: "▸";
+  content: "▶";
   color: var(--muted);
-  font-size: 0.9em;
+  font-size: 1.1em;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
 .section details[open] > summary::before {
-  content: "▾";
+  transform: rotate(90deg);
 }
 
 .section details > summary h2 {
   margin: 0;
 }
 
-/* Open state: vertical title on left, content on right */
-.section details[open] {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 0;
-}
-
+/* Open state: keep title horizontal */
 .section details[open] > summary {
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  padding-right: 20px;
-  border-right: 1px solid var(--border);
-  margin-right: 20px;
-  flex-shrink: 0;
+  margin-bottom: 16px;
 }
 
-.section details[open] > summary h2 {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  white-space: nowrap;
+/* Smooth animation for content */
+.section-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
 }
 
-/* Content area when open */
+.section-inner {
+  overflow: hidden;
+}
+
 .section details[open] > .section-content {
-  flex: 1;
-  min-width: 0;
+  grid-template-rows: 1fr;
 }
 
-.section-content > *:first-child {
+.section-inner > *:first-child {
   margin-top: 0;
 }
 
-.section-content > p:first-child {
+.section-inner > p:first-child {
   margin-top: 0;
 }
 
@@ -139,7 +129,7 @@ body {
   font-size: 16px;
 }
 
-.section-content > h3:first-child {
+.section-inner > h3:first-child {
   margin-top: 0;
 }
 
